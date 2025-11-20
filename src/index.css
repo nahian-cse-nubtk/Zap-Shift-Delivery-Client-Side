@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@plugin "daisyui"{
+  themes: light --default;
+  --color-primary: blue;
+  --color-secondary: teal;
+}
+
+a.active{
+  text-decoration: underline;
+  color: blue;
+}

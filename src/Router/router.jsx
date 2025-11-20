@@ -4,6 +4,9 @@ import Home from "../Pages/Home/Home/Home";
 import Coverage from "../Pages/Coverage/Coverage";
 import AuthLayout from "../Layouts/AuthLayout/AuthLayout";
 import Login from "../Pages/Auth/Login/Login";
+import Register from "../Pages/Auth/Register/Register";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import Rider from "../Pages/Rider/Rider";
 
 const router = createBrowserRouter([
     {
@@ -15,9 +18,13 @@ const router = createBrowserRouter([
             },
             {
                 path:'/coverage',
-                Component: Coverage,
+                element: <PrivateRoute><Coverage></Coverage></PrivateRoute>,
                 loader: ()=>fetch('/warehouses.json'),
                 hydrateFallbackElement: <p>Loading...</p>
+            },
+            {
+                path: '/rider',
+                element: <PrivateRoute><Rider></Rider></PrivateRoute>
             }
         ]
 
@@ -32,7 +39,8 @@ const router = createBrowserRouter([
 
             },
             {
-                path: '/register'
+                path: '/register',
+                Component: Register
 
             }
         ]

@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from "../../Components/Logo/Logo";
 import { Outlet } from 'react-router';
 import authImage from '../.../../../assets/authImage.png'
+import { ToastContainer } from 'react-toastify';
 const AuthLayout = () => {
     return (
         <div className='max-w-7xl mx-auto my-5'>
@@ -14,7 +15,7 @@ const AuthLayout = () => {
                     <img src={authImage} alt="Authenication" />
                 </div>
             </div>
-
+            <ToastContainer/>
         </div>
     );
 };

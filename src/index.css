@@ -2,52 +2,33 @@
 
 /* Enable DaisyUI themes */
 @plugin "daisyui" {
-  themes: light --default, dark --prefers-dark;
+  themes: light --default, dark --prefersdark;
+
 }
 
-/* Add custom colors to Tailwind */
-@theme {
-  --color-brand-light: #e0f2fe;
-  --color-brand-dark: #0c4a6e;
-  --color-brand-accent: #f97316;
-}
 
-/* Create your custom DaisyUI theme */
 @plugin "daisyui/theme" {
-  name: "mytheme";
-  default: false;
-  prefers-dark: false;
-  color-scheme: light;
+  name: "light";
+  default: true;
 
-  /* Base colors */
-  --color-base-100: oklch(98% 0.02 240);
-  --color-base-200: oklch(95% 0.03 240);
-  --color-base-300: oklch(92% 0.04 240);
-  --color-base-content: oklch(20% 0.05 240);
+  --color-primary: #CAEB66;
+  --color-primary-content: black;
+  --color-secondary: oklch(70% 0.22 200);
+  --color-accent: oklch(75% 0.25 80);
 
-  /* Brand colors */
-  --color-primary-custom: red;
-  --color-primary-content: oklch(98% 0.01 280);
-  --color-secondary: oklch(70% 0.25 180);
-  --color-secondary-content: oklch(98% 0.01 180);
-  --color-accent: oklch(65% 0.25 40);
-  --color-accent-content: oklch(98% 0.01 40);
+  --color-base-100: oklch(99% 0.005 240);
+  --color-base-200: oklch(97% 0.008 240);
+  --color-base-300: oklch(94% 0.012 240);
+  --color-base-content: oklch(22% 0.04 240);
 
-  /* Neutral */
-  --color-neutral: oklch(50% 0.05 240);
-  --color-neutral-content: oklch(98% 0.01 240);
+  --color-success: oklch(70% 0.22 140);
+  --color-warning: oklch(85% 0.25 80);
+  --color-error: oklch(65% 0.3 30);
+  --color-info: oklch(75% 0.18 220);
 
-  /* State colors */
-  --color-info: oklch(70% 0.2 220);
-  --color-info-content: oklch(98% 0.01 220);
-  --color-success: oklch(65% 0.25 140);
-  --color-success-content: oklch(98% 0.01 140);
-  --color-warning: oklch(80% 0.25 80);
-  --color-warning-content: oklch(20% 0.05 80);
-  --color-error: oklch(60% 0.25 20);
-  --color-error-content: oklch(98% 0.01 20);
+  --rounded-box: 1rem;
+  --rounded-btn: 0.5rem;
 }
 a.active{
-  text-decoration: underline;
-  color: blue;
+ background-color: #CAEB66;
 }

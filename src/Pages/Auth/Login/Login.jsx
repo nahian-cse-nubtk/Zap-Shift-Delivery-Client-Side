@@ -5,13 +5,25 @@ import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router";
 
 const Login = () => {
-    const {signInWithGoogle} = useAuth();
+    const {signInWithGoogle,signInUser} = useAuth();
     const navigate = useNavigate()
     const location = useLocation()
   const { register, handleSubmit } = useForm();
 
   const handleLogin = (data) => {
-    console.log(data);
+    signInUser(data.email,data.password)
+    .then(result=>{
+        if(result.user){
+            toast('login is sucussessful')
+            navigate(location.state||'/')
+        }
+    })
+    .catch(error=>{
+        console.log(error);
+    })
+
+
+
   };
   const handleGoogleSignIn =()=>{
     signInWithGoogle()

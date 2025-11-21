@@ -26,6 +26,9 @@ const NavBar = () => {
         <NavLink to="/coverage">Coverage</NavLink>
       </li>
       <li>
+        <NavLink to="/sendParcel">Send Parcel</NavLink>
+      </li>
+      <li>
         <NavLink to="/rider">Be a Rider</NavLink>
       </li>
     </>
@@ -74,10 +77,10 @@ const NavBar = () => {
         ) : (
           <div className="flex items-center ">
             <div className="mr-3">
-              <Link className="btn btn-primary bg-primary">Logout</Link>
+              <Link to='/login' className="btn btn-primary bg-primary">Login</Link>
             </div>
             <div>
-              <Link className="btn btn-primary bg-primary">Logout</Link>
+              <Link to='/register' className="btn btn-primary bg-primary">Register</Link>
             </div>
           </div>
         )}

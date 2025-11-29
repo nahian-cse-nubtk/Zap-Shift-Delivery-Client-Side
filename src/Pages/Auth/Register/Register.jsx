@@ -1,10 +1,13 @@
-import axios from "axios";
+
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth/useAuth";
+import UseAxiosSecure from "../../../hooks/UseAxiosSecure/UseAxiosSecure";
+import axios from "axios";
 
 const Register = () => {
     const {createUser,updateUser} =useAuth();
+    const axiosSecure = UseAxiosSecure();
   const {
     register,
     handleSubmit,
@@ -24,7 +27,16 @@ const Register = () => {
         formData
       )
       .then((res) => {
-        console.log(res.data.data.url);
+        // console.log(res.data.data.url);
+        const userInfo ={
+          email: data.email,
+          name: data.name,
+          photoURL: res.data.data.url
+        }
+        axiosSecure.post('/user',userInfo)
+        .then(res=>{
+          console.log(res.data)
+        })
         const profile = {
             displayName : data.name,
             photoURL: res.data.data.url

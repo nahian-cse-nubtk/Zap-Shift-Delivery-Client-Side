@@ -3,12 +3,14 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth/useAuth";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router";
+import UseAxiosSecure from "../../../hooks/UseAxiosSecure/UseAxiosSecure";
 
 const Login = () => {
     const {signInWithGoogle,signInUser} = useAuth();
     const navigate = useNavigate()
     const location = useLocation()
   const { register, handleSubmit } = useForm();
+  const axiosSecure = UseAxiosSecure()
 
   const handleLogin = (data) => {
     signInUser(data.email,data.password)
@@ -30,6 +32,15 @@ const Login = () => {
     .then(result=>{
         console.log(result.user)
         if(result.user){
+          const userInfo ={
+          email: result.user.email,
+          name: result.user.displayName,
+          photoURL: result.user.photoUrl
+        }
+        axiosSecure.post('/users',userInfo)
+        .then(res=>{
+          console.log(res.data)
+        })
             toast('login is sucussessful')
             navigate(location.state||'/')
         }

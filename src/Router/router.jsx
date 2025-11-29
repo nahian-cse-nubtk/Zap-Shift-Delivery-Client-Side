@@ -31,6 +31,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/rider',
+                loader: ()=>fetch('/warehouses.json'),
+                hydrateFallbackElement: <p>Loading...</p>,
                 element: <PrivateRoute><Rider></Rider></PrivateRoute>
             },
             {

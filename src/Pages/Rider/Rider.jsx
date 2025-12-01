@@ -2,8 +2,11 @@ import React from "react";
 import { useForm, useWatch } from "react-hook-form";
 import useAuth from "../../hooks/useAuth/useAuth";
 import { useLoaderData } from "react-router";
+import UseAxiosSecure from "../../hooks/UseAxiosSecure/UseAxiosSecure";
+import { toast } from "react-toastify";
 
 const Rider = () => {
+    const axiosSecure = UseAxiosSecure()
     const {user}=useAuth();
   const { register, handleSubmit,control } = useForm();
   const serviceCenters = useLoaderData()
@@ -17,7 +20,13 @@ const Rider = () => {
   }
 
   const handleRegister =(data)=>{
-    console.log(data)
+     axiosSecure.post('/riders',data)
+     .then(res=>{
+        console.log(res.data)
+        if(res.data.insertedId){
+            toast('Your request is being processed')
+        }
+     })
   }
   return (
     <div>

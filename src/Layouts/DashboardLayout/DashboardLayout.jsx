@@ -2,9 +2,12 @@ import React from "react";
 import { Outlet,NavLink } from "react-router";
 import { AiOutlineShopping } from "react-icons/ai";
 import { MdChangeHistory } from "react-icons/md";
-import { FaMotorcycle } from "react-icons/fa";
+import { FaMotorcycle, FaUsers } from "react-icons/fa";
+import UseRole from "../../hooks/UseRole/UseRole";
 
 const DashboardLayout = () => {
+  const {role}=UseRole()
+  console.log(role)
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -65,14 +68,16 @@ const DashboardLayout = () => {
             <li>
               <NavLink to='paymentHistory'
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Settings"
+                data-tip="Payment history"
               >
                 {/* Settings icon */}
                 <MdChangeHistory />
                 <span className="is-drawer-close:hidden">Payment History</span>
               </NavLink>
             </li>
-            <li>
+           {
+            role==='admin'&&<>
+             <li>
               <NavLink to='approveRider'
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Approve Rider"
@@ -82,6 +87,18 @@ const DashboardLayout = () => {
                 <span className="is-drawer-close:hidden">Approve Rider</span>
               </NavLink>
             </li>
+            <li>
+              <NavLink to='userManagement'
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="User Management"
+              >
+                {/* Settings icon */}
+                <FaUsers />
+                <span className="is-drawer-close:hidden">User Management</span>
+              </NavLink>
+            </li>
+            </>
+           }
           </ul>
         </div>
       </div>
